@@ -42,7 +42,7 @@ class Main {
             if (err) throw err;
             if (data) {
 
-                this.skus = data.split("\n").slice(1).map((str) => "0" + str.split(";")[1]).filter(sku => sku.length > 1).slice(0, 1);
+                this.skus = data.split("\n").slice(1).map((str) => "0" + str.split(";")[1]).filter(sku => sku.length > 1);
 
                 this.browser = await puppeteer.launch({pipe: true}).catch(e => {
                     console.log(e);
@@ -196,7 +196,7 @@ class Main {
                 console.log("Should do next one");
                 this.skus.slice(this.count, this.count + this.rate).forEach(this.saveJson.bind(this));
 
-            }, 2000);
+            }, this.interval);
         }
 
         if (error) this.errors.push(error);
