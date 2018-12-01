@@ -80,35 +80,45 @@ class Main {
             // "8718858075485",
             // "8718053679570",
             // "8718053671819",
-            // "8718053671901",
-            // "8718053671918",
-            // "8719743060395",
-            // "8719743060487",
+            "8718053671901",
+            "8718053671918",
+            "8719743060395",
+            "8719743060487",
             "8718053677972"
         ];
 
         this.app = express();
         this.port = 3001;
 
+        this.app.get('*.*', express.static(process.cwd() + '/prices', {maxAge: 160000}));
 
-
-        (async () => {
-            this.browser = await puppeteer.launch();
-
-            await this.save();
-
-        })();
 
 
         this.app.use("/", (req, res) => {
             res.send("works");
         });
 
+        fs.readFile(process.cwd() + '/ean_check.csv', 'utf8', (err, data) => {
+            if (err) throw err;
+            if(data) {
+
+                this.skus = data.split("\n").slice(1).map((str) => str.split(";")[1]);
+
+                (async () => {
+                    this.browser = await puppeteer.launch();
+
+                    await this.save();
+
+                })();
+            }
+
+        });
+
         this.start();
     }
 
     save() {
-        this.endCount = this.skus.lengthl;
+        this.endCount = this.skus.length;
         this.count = 0;
         // this.saveJson(this.skus[0]);
         this.skus.forEach(this.saveJson.bind(this))
@@ -118,12 +128,9 @@ class Main {
         console.log("Works!");
     }
 
-
     find(query, prop, search) {
         return [].slice.call(document.querySelectorAll(query)).find(elm => elm.getAttribute(prop) === search).innerText;
     }
-
-
 
     async saveJson(sku) {
         let error = false;
@@ -188,7 +195,7 @@ class Main {
                             )
                         );
 
-                        fs.writeFile(process.cwd() + `/prices/${sku}.json`, JSON.stringify(prices.map(price => Object.assign(price, {date: new Date()}))),  (err) => {
+                        fs.writeFile(process.cwd() + `/prices/${sku}.json`, JSON.stringify(prices.map(price => Object.assign(price, {date: new Date()}))), (err) => {
                             if (err) {
                                 return console.log(err);
                             }
@@ -208,10 +215,11 @@ class Main {
     next() {
         this.count++;
 
-        if(this.count < this.endCount) {
+        if (this.count < this.endCount) {
             this.saveJson(this.skus[this.count]);
         }
     }
+
     start() {
         this.app.listen(this.port, "0.0.0.0", () => {
             console.log(`Listening on: ${this.port}`);
