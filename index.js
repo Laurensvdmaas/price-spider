@@ -30,6 +30,7 @@ class Main {
 
 
         this.interval = (process.env.INTERVAL || 5 * 60) * 1000;
+        this.rate = process.env.RATE || 5;
 
         console.log(this.interval);
 
@@ -61,10 +62,10 @@ class Main {
         this.success = [];
 
         this.endCount = this.skus.length;
-        console.log("Start doing", this.endCount, `sku's, every ${this.interval / 1000 / 60 } minutes 5 sku's`);
+        console.log("Start doing", this.endCount, `sku's, every ${this.interval / 1000 / 60 } minutes ${this.rate} sku's`);
         this.count = 0;
         // this.saveJson(this.skus[0]);
-        this.skus.slice(0, 5).forEach(this.saveJson.bind(this))
+        this.skus.slice(0, this.rate).forEach(this.saveJson.bind(this))
     }
 
     getSku() {
@@ -190,10 +191,10 @@ class Main {
 
         console.log(this.count);
 
-        if (this.count % 5 === 0 && this.count !== this.endCount) {
+        if (this.count % this.rate === 0 && this.count !== this.endCount) {
             setTimeout(() => {
                 console.log("Should do next one");
-                this.skus.slice(this.count, this.count + 5).forEach(this.saveJson.bind(this));
+                this.skus.slice(this.count, this.count + this.rate).forEach(this.saveJson.bind(this));
 
             }, 2000);
         }
