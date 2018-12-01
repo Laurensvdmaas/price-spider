@@ -4,76 +4,74 @@ const fs = require('fs');
 
 class Main {
     init() {
-        this.test = "jajaja";
-
         this.skus = [
-            "8712117110788",
-            "8719323038349",
-            "8718053679549",
-            "8718053672526",
-            "8718053677521",
-            "8719323034044",
-            "8718053677958",
-            "8719323037359",
-            "8718858075485",
-            "8718053679570",
-            "8718053671819",
-            "8718053671901",
-            "8718053671918",
-            "8719743060395",
-            "8719743060487",
-            "8718053677972",
-            "8712117110788",
-            "8719323038349",
-            "8718053679549",
-            "8718053672526",
-            "8718053677521",
-            "8719323034044",
-            "8718053677958",
-            "8719323037359",
-            "8718858075485",
-            "8718053679570",
-            "8718053671819",
-            "8718053671901",
-            "8718053671918",
-            "8719743060395",
-            "8719743060487",
-            "8718053677972",
-            "8712117110788",
-            "8719323038349",
-            "8718053679549",
-            "8718053672526",
-            "8718053677521",
-            "8719323034044",
-            "8718053677958",
-            "8719323037359",
-            "8718858075485",
-            "8718053679570",
-            "8718053671819",
-            "8718053671901",
-            "8718053671918",
-            "8719743060395",
-            "8719743060487",
-            "8718053677972",
-            "8712117110788",
-            "8719323038349",
-            "8718053679549",
-            "8718053672526",
-            "8718053677521",
-            "8719323034044",
-            "8718053677958",
-            "8719323037359",
-            "8718858075485",
-            "8718053679570",
-            "8718053671819",
-            "8718053671901",
-            "8718053671918",
-            "8719743060395",
-            "8719743060487",
-            "8718053677972",
-            "8712117110788",
-            "8719323038349",
-            "8718053679549",
+            // "8712117110788",
+            // "8719323038349",
+            // "8718053679549",
+            // "8718053672526",
+            // "8718053677521",
+            // "8719323034044",
+            // "8718053677958",
+            // "8719323037359",
+            // "8718858075485",
+            // "8718053679570",
+            // "8718053671819",
+            // "8718053671901",
+            // "8718053671918",
+            // "8719743060395",
+            // "8719743060487",
+            // "8718053677972",
+            // "8712117110788",
+            // "8719323038349",
+            // "8718053679549",
+            // "8718053672526",
+            // "8718053677521",
+            // "8719323034044",
+            // "8718053677958",
+            // "8719323037359",
+            // "8718858075485",
+            // "8718053679570",
+            // "8718053671819",
+            // "8718053671901",
+            // "8718053671918",
+            // "8719743060395",
+            // "8719743060487",
+            // "8718053677972",
+            // "8712117110788",
+            // "8719323038349",
+            // "8718053679549",
+            // "8718053672526",
+            // "8718053677521",
+            // "8719323034044",
+            // "8718053677958",
+            // "8719323037359",
+            // "8718858075485",
+            // "8718053679570",
+            // "8718053671819",
+            // "8718053671901",
+            // "8718053671918",
+            // "8719743060395",
+            // "8719743060487",
+            // "8718053677972",
+            // "8712117110788",
+            // "8719323038349",
+            // "8718053679549",
+            // "8718053672526",
+            // "8718053677521",
+            // "8719323034044",
+            // "8718053677958",
+            // "8719323037359",
+            // "8718858075485",
+            // "8718053679570",
+            // "8718053671819",
+            // "8718053671901",
+            // "8718053671918",
+            // "8719743060395",
+            // "8719743060487",
+            // "8718053677972",
+            // "8712117110788",
+            // "8719323038349",
+            // "8718053679549",
             "8718053672526",
             "8718053677521",
             "8719323034044",
@@ -93,6 +91,7 @@ class Main {
         this.port = 3001;
 
 
+
         (async () => {
             this.browser = await puppeteer.launch();
 
@@ -109,8 +108,10 @@ class Main {
     }
 
     save() {
-        console.log(`Start doing ${this.skus.length} sku's`);
-        this.skus.forEach(this.saveJson.bind(this))
+        this.endCount = this.skus.lengthl;
+        this.count = 0;
+        this.saveJson(this.skus[0]);
+        // this.skus.forEach(this.saveJson.bind(this))
     }
 
     getSku() {
@@ -122,8 +123,12 @@ class Main {
         return [].slice.call(document.querySelectorAll(query)).find(elm => elm.getAttribute(prop) === search).innerText;
     }
 
+
+
     async saveJson(sku) {
         let error = false;
+
+        console.log("started sku", this.count);
 
         const page = await this.browser.newPage();
         await page.goto("http://google.nl");
@@ -135,7 +140,7 @@ class Main {
         await page.keyboard.down('Enter').catch(() => {
             error = true;
             console.log(`error step 1, ${sku}`);
-            page.screenshot({path: process.cwd() + `/errors/error-${sku}.png`});
+            page.screenshot({path: process.cwd() + `/errors/error-${sku}.png`, fullPage: true});
         });
 
         if (!error) {
@@ -150,11 +155,12 @@ class Main {
 
             if (!error) {
                 await page.waitFor(2000);
+
                 await page.click("#search a").catch(() => {
                     error = true;
 
                     console.log(`error step 2, ${sku}`);
-                    page.screenshot({path: process.cwd() + `/errors/error-${sku}.png`});
+                    page.screenshot({path: process.cwd() + `/errors/error-${sku}.png`, fullPage: true});
                 });
 
 
@@ -166,7 +172,7 @@ class Main {
                         error = true;
 
                         console.log(`error step 3, ${sku}`);
-                        page.screenshot({path: process.cwd() + `/errors/error-${sku}.png`});
+                        page.screenshot({path: process.cwd() + `/errors/error-${sku}.png`, fullPage: true});
                     });
 
 
@@ -182,11 +188,12 @@ class Main {
                             )
                         );
 
-                        fs.writeFile(process.cwd() + `/prices/${sku}.json`, JSON.stringify(prices.map(price => Object.assign(price, {date: new Date()}))), function (err) {
+                        fs.writeFile(process.cwd() + `/prices/${sku}.json`, JSON.stringify(prices.map(price => Object.assign(price, {date: new Date()}))),  (err) => {
                             if (err) {
                                 return console.log(err);
                             }
 
+                            this.next();
                             console.log(`Saved ${sku}`);
                         });
 
@@ -198,6 +205,13 @@ class Main {
     }
 
 
+    next() {
+        this.count++;
+
+        if(this.count < this.endCount) {
+            this.saveJson(this.skus[this.count]);
+        }
+    }
     start() {
         this.app.listen(this.port, "0.0.0.0", () => {
             console.log(`Listening on: ${this.port}`);
