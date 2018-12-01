@@ -110,8 +110,8 @@ class Main {
     save() {
         this.endCount = this.skus.lengthl;
         this.count = 0;
-        this.saveJson(this.skus[0]);
-        // this.skus.forEach(this.saveJson.bind(this))
+        // this.saveJson(this.skus[0]);
+        this.skus.forEach(this.saveJson.bind(this))
     }
 
     getSku() {
