@@ -102,12 +102,12 @@ class Main {
             if (err) throw err;
             if(data) {
 
-                this.skus = data.split("\n").slice(1).map((str) => "0" + str.split(";")[1]);
-
+                this.skus = data.split("\n").slice(1).map((str) => "0" + str.split(";")[1]).filter(sku => sku.length > 1);
+                console.log(this.skus);
                 (async () => {
                     this.browser = await puppeteer.launch();
 
-                    await this.save();
+                    // await this.save();
 
                 })();
             }
