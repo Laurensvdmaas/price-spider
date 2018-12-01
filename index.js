@@ -102,7 +102,7 @@ class Main {
             if (err) throw err;
             if(data) {
 
-                this.skus = data.split("\n").slice(1).map((str) => str.split(";")[1]);
+                this.skus = data.split("\n").slice(1).map((str) => "0" + str.split(";")[1]);
 
                 (async () => {
                     this.browser = await puppeteer.launch();
