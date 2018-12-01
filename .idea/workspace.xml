@@ -2,8 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="74d27890-d188-4fe7-96e8-03355310b9ca" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/errors/error-8718053677972.png" beforeDir="false" afterPath="$PROJECT_DIR$/errors/error-8718053677972.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/errors/error-8719743060487.png" beforeDir="false" afterPath="$PROJECT_DIR$/errors/error-8719743060487.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/errors/test.png" beforeDir="false" afterPath="$PROJECT_DIR$/errors/test.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/prices/8718053677972.json" beforeDir="false" afterPath="$PROJECT_DIR$/prices/8718053677972.json" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -16,19 +19,14 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="251">
-              <caret line="143" column="35" selection-start-line="143" selection-start-column="35" selection-end-line="143" selection-end-column="35" />
+            <state relative-caret-position="125">
+              <caret line="63" column="109" selection-start-line="63" selection-start-column="109" selection-end-line="63" selection-end-column="109" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/errors/test.png">
-          <provider selected="true" editor-type-id="images" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/errors/error-08712117110788.png">
+        <entry file="file://$PROJECT_DIR$/errors/test-3.png">
           <provider selected="true" editor-type-id="images" />
         </entry>
       </file>
@@ -47,10 +45,12 @@
       <find>JSON.</find>
       <find>error-</find>
       <find>process</find>
-      <find>screen</find>
       <find>step 3</find>
       <find>saveJson</find>
       <find>console</find>
+      <find>screen</find>
+      <find>this.sku</find>
+      <find>newPage</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -148,12 +148,12 @@
       <updated>1543576458367</updated>
       <workItem from="1543576459909" duration="14770000" />
       <workItem from="1543600006185" duration="7603000" />
-      <workItem from="1543661970566" duration="2464000" />
+      <workItem from="1543661970566" duration="6222000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="24837000" />
+    <option name="totallyTimeSpent" value="28595000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -168,7 +168,7 @@
     <frame x="0" y="23" width="1440" height="877" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.36552218" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.36552218" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -181,7 +181,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="9" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.32866243" />
+      <window_info anchor="bottom" id="Terminal" order="10" visible="true" weight="0.32866243" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -287,10 +287,19 @@
     <entry file="file://$PROJECT_DIR$/errors/test.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/errors/test-1.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/errors/test-2.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/errors/test-3.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="251">
-          <caret line="143" column="35" selection-start-line="143" selection-start-column="35" selection-end-line="143" selection-end-column="35" />
+        <state relative-caret-position="125">
+          <caret line="63" column="109" selection-start-line="63" selection-start-column="109" selection-end-line="63" selection-end-column="109" />
         </state>
       </provider>
     </entry>
